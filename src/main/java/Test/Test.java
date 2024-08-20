@@ -42,7 +42,6 @@ public class Test {
         //add the button to the canvas
         frame.getContentPane().add(button);
 
-
         //set the canvas visible
         frame.setVisible(true);
     }
