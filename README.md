@@ -28,6 +28,20 @@ To get started with the game, follow these simple steps:
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/yourusername/puzzle-game.git
+   git clone https://github.com/yourusername/puzzle-game.git](https://github.com/Yunshan-CAI/puzzleGame.git)
    cd puzzle-game
+
+2. **Build the project**:
+
+   ```bash
+   mvn clean install
+
+3. **Run the game**:
+
+  ```bash
+  java -jar target/puzzle-game-1.0-SNAPSHOT.jar
+
+## What the game looks like
+
+
 
