@@ -28,7 +28,6 @@ public class GameFrame extends JFrame implements KeyListener, ActionListener {
     JMenuItem load = new JMenuItem("Load");
     JMenuItem exit = new JMenuItem("Exit");
 
-
     JMenuItem scene1 = new JMenuItem("This scene");
     JMenuItem scene2 = new JMenuItem("Scene 2");
     JMenuItem scene3 = new JMenuItem("Scene 3");
@@ -38,7 +37,6 @@ public class GameFrame extends JFrame implements KeyListener, ActionListener {
 
     // 标志当前是否是 scene2
     private boolean isScene2 = false; // 标志当前是否是 scene2
-
 
     public GameFrame() {
 
@@ -81,6 +79,9 @@ public class GameFrame extends JFrame implements KeyListener, ActionListener {
                 index++;
             }
         }
+
+        //make sure count is 0 when the scene changed
+        count = 0;
     }
 
     //initialize the image
@@ -170,7 +171,7 @@ public class GameFrame extends JFrame implements KeyListener, ActionListener {
         function.add(load);
         function.add(exit);
 
-        // not gonna write the whole function this time, could be completed later
+        // now two scenes, scene 3 is not implemented
         change.add(scene1);
         change.add(scene2);
         change.add(scene3);
@@ -188,8 +189,8 @@ public class GameFrame extends JFrame implements KeyListener, ActionListener {
         save.addActionListener(this);
         exit.addActionListener(this);
         load.addActionListener(this);
+        scene1.addActionListener(this);
         scene2.addActionListener(this);
-
 
         //add the mouse listener for the about menu
         about.addMouseListener(new MouseAdapter() {
@@ -245,8 +246,10 @@ public class GameFrame extends JFrame implements KeyListener, ActionListener {
             quoteDialog.add(quoteLabel, BorderLayout.CENTER);
 
             // Set JDialog's size
-            quoteDialog.setSize(300, 200); // Set the width and height of the dialog
-            quoteDialog.setLocationRelativeTo(this); // Center the dialog relative to the parent window
+            // Set the width and height of the dialog
+            quoteDialog.setSize(300, 200);
+            // Center the dialog relative to the parent window
+            quoteDialog.setLocationRelativeTo(this);
 
             // Display the dialog
             quoteDialog.setVisible(true);
@@ -318,8 +321,6 @@ public class GameFrame extends JFrame implements KeyListener, ActionListener {
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
         if (source == replay) {
-            //clear the steps
-            count = 0;
             //initialize the data
             initData();
             //initialize the images
@@ -334,7 +335,8 @@ public class GameFrame extends JFrame implements KeyListener, ActionListener {
         } else if (source == scene2) {
             //switch to scene 2
             switchToScene("/images/l'amour/");
-        }else if (source == scene1){
+
+        } else if (source == scene1) {
             // Switch back to scene 1
             switchToScene("/images/taxi_driver/");
 
@@ -408,16 +410,13 @@ public class GameFrame extends JFrame implements KeyListener, ActionListener {
             x = ois.readInt();
             y = ois.readInt();
             count = ois.readInt();
-            initImage();  // 更新图像以反映加载的状态
+            initImage();
             JOptionPane.showMessageDialog(this, "Game loaded successfully!");
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Failed to load the game.");
         }
     }
-
-    //待做的事情
-    //当点this scene的时候返回scene 1
 
 }
 
