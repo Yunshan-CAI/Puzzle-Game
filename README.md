@@ -40,4 +40,7 @@ To get started with the game, follow these simple steps:
    ```bash
    java -jar target/puzzle-game-1.0-SNAPSHOT.jar
 
+## What does it look like?
+!()
+
 
